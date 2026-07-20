@@ -46,5 +46,7 @@ $routes->group('client', ['filter' => 'client_auth'], function ($routes) {
     $routes->post('retrait/valider', 'Client\OperationController::retrait');
     $routes->get('transfert', 'Client\OperationController::formTransfert');
     $routes->post('transfert/valider', 'Client\OperationController::transfert');
+    $routes->get('transfert-multiple', 'Client\OperationController::formTransfertMultiple');
+    $routes->post('transfert-multiple/valider', 'Client\OperationController::transfertMultiple');
     $routes->get('historique', 'Client\OperationController::historique');
 });

@@ -28,3 +28,10 @@
 
 ## Point commun
 - La méthode BaremeFraisModel::calculerFrais(int $typeTransactionId, int $montant): int a été centralisée pour alimenter les opérations de retrait et de transfert.
+
+## Travaux V2 réalisés côté client
+- Ajout du transfert vers opérateur externe avec calcul de commission et débit du solde du client.
+- Ajout de l’option « inclure les frais de retrait » pour les transferts internes.
+- Ajout du transfert multiple avec répartition équitable du montant, vérification du solde global et transaction atomique.
+- Mise à jour de l’historique pour afficher les destinataires externes et la commission associée.
+- Mise à jour de la navigation client et de la page de compte avec l’accès au transfert multiple et l’information sur les crédits de frais de retrait.
