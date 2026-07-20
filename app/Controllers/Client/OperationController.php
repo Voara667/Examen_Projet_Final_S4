@@ -168,8 +168,11 @@ class OperationController extends BaseController
     {
         $clientId = session()->get('client')['id'];
         $transactionModel = new TransactionModel();
-        $data['transactions'] = $transactionModel->where('client_id', $clientId)
-            ->orderBy('created_at', 'DESC')
+        $data['transactions'] = $transactionModel
+            ->select('transactions.*, type_transaction.libelle AS type_transaction_libelle, type_transaction.code AS type_transaction_code')
+            ->join('type_transaction', 'type_transaction.id = transactions.type_transaction_id')
+            ->where('transactions.client_id', $clientId)
+            ->orderBy('transactions.created_at', 'DESC')
             ->findAll();
 
         return view('client/historique', $data);
