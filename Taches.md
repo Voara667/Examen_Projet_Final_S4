@@ -29,7 +29,16 @@
 ## Point commun
 - La méthode BaremeFraisModel::calculerFrais(int $typeTransactionId, int $montant): int a été centralisée pour alimenter les opérations de retrait et de transfert.
 
-## Travaux V2 réalisés côté client
+## Travaux V2 réalisés côté opérateur(voara)
+- Mise à jour du schéma (`base.sql`) : nouvelle table `operateurs_externes` (nom + commission en %), colonne `operateur_externe_id` sur `prefixes`, colonnes `operateur_externe_id`, `numero_destinataire_externe` et `commission` sur `transactions`, nouvelles vues `vue_situation_gains` (séparée interne/externe) et `vue_montants_a_envoyer_operateurs`.
+- Ajout du modèle `OperateurExterneModel` et de la méthode `PrefixeModel::trouverPourNumero()` (détection interne/externe réutilisée côté client).
+- Ajout du CRUD complet des opérateurs externes (ajout, modification de la commission, suppression) et rattachement de préfixes à un opérateur externe.
+- Mise à jour de la page « Situation des gains » pour séparer les gains internes des gains liés aux transferts vers les opérateurs externes.
+- Ajout de la page « Montants à envoyer » listant, par opérateur externe, le montant total transféré, la commission due et le total à leur reverser.
+- Mise à jour de la navbar et du tableau de bord opérateur avec l'accès aux nouvelles pages (Opérateurs externes, Montants à envoyer).
+- Protection CSRF et affichage sécurisé des données avec esc() sur toutes les nouvelles vues.
+
+## Travaux V2 réalisés côté client(samuel)
 - Ajout du transfert vers opérateur externe avec calcul de commission et débit du solde du client.
 - Ajout de l’option « inclure les frais de retrait » pour les transferts internes.
 - Ajout du transfert multiple avec répartition équitable du montant, vérification du solde global et transaction atomique.

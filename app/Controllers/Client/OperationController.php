@@ -73,24 +73,13 @@ class OperationController extends BaseController
             return redirect()->back()->with('error', 'Montant hors barème, opération impossible.');
         }
 
-        $creditDisponible = (int) ($client['credit_frais_retrait'] ?? 0);
-        $fraisPrisSurCredit = 0;
-        if ($creditDisponible > 0) {
-            $fraisPrisSurCredit = min($fraisDu, $creditDisponible);
-        }
-        $fraisResteAPayer = $fraisDu - $fraisPrisSurCredit;
-
-        if ($client['solde'] < $montant + $fraisResteAPayer) {
+        if ($client['solde'] < $montant + $fraisDu) {
             return redirect()->back()->with('error', 'Solde insuffisant pour effectuer ce retrait.');
         }
 
-        $nouveauSolde = $client['solde'] - $montant - $fraisResteAPayer;
-        $nouveauCreditFraisRetrait = max(0, $creditDisponible - $fraisPrisSurCredit);
+        $nouveauSolde = $client['solde'] - $montant - $fraisDu;
 
-        $clientModel->update($clientId, [
-            'solde' => $nouveauSolde,
-            'credit_frais_retrait' => $nouveauCreditFraisRetrait,
-        ]);
+        $clientModel->update($clientId, ['solde' => $nouveauSolde]);
 
         $transactionModel = new TransactionModel();
         $transactionModel->insert([
@@ -98,7 +87,7 @@ class OperationController extends BaseController
             'client_destinataire_id' => null,
             'type_transaction_id' => $type['id'],
             'montant' => $montant,
-            'frais' => $fraisResteAPayer,
+            'frais' => $fraisDu,
             'nouveau_solde' => $nouveauSolde,
         ]);
 
@@ -169,14 +158,10 @@ class OperationController extends BaseController
             $db->transStart();
 
             $nouveauSoldeEmetteur = $emetteur['solde'] - $totalADebiter;
-            $nouveauSoldeDestinataire = $destinataire['solde'] + $montant;
-            $nouveauCreditFraisRetrait = $destinataire['credit_frais_retrait'] + $fraisRetraitEstime;
+            $nouveauSoldeDestinataire = $destinataire['solde'] + $montant + $fraisRetraitEstime;
 
             $clientModel->update($emetteurId, ['solde' => $nouveauSoldeEmetteur]);
-            $clientModel->update($destinataire['id'], [
-                'solde' => $nouveauSoldeDestinataire,
-                'credit_frais_retrait' => $nouveauCreditFraisRetrait,
-            ]);
+            $clientModel->update($destinataire['id'], ['solde' => $nouveauSoldeDestinataire]);
 
             $transactionModel = new TransactionModel();
             $transactionModel->insert([
@@ -358,13 +343,9 @@ class OperationController extends BaseController
             foreach ($operations as $operation) {
                 if ($operation['type'] === 'interne') {
                     $destinataireActuel = $clientModel->find($operation['destinataire']['id']);
-                    $nouveauSoldeDestinataire = $destinataireActuel['solde'] + $operation['montant'];
-                    $nouveauCreditFraisRetrait = $destinataireActuel['credit_frais_retrait'] + $operation['frais_retrait_estime'];
+                    $nouveauSoldeDestinataire = $destinataireActuel['solde'] + $operation['montant'] + $operation['frais_retrait_estime'];
 
-                    $clientModel->update($operation['destinataire']['id'], [
-                        'solde' => $nouveauSoldeDestinataire,
-                        'credit_frais_retrait' => $nouveauCreditFraisRetrait,
-                    ]);
+                    $clientModel->update($operation['destinataire']['id'], ['solde' => $nouveauSoldeDestinataire]);
 
                     $transactionModel->insert([
                         'client_id' => $emetteurId,
