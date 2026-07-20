@@ -9,7 +9,7 @@ class ClientModel extends Model
     protected $table            = 'clients';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
-    protected $allowedFields    = ['numero_telephone', 'solde'];
+    protected $allowedFields    = ['numero_telephone', 'solde', 'credit_frais_retrait'];
     protected $useTimestamps    = true;
     protected $dateFormat       = 'datetime';
     protected $createdField     = 'created_at';

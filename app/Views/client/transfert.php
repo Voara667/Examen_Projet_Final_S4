@@ -15,6 +15,13 @@
                         <label class="form-label">Montant</label>
                         <input type="number" name="montant" class="form-control" required>
                     </div>
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" name="inclure_frais_retrait" value="1" id="inclureFraisRetrait">
+                        <label class="form-check-label" for="inclureFraisRetrait">
+                            Inclure les frais de retrait au destinataire
+                        </label>
+                        <div class="form-text">Le destinataire pourra retirer ce montant plus tard sans frais supplémentaires, dans la limite du montant envoyé.</div>
+                    </div>
                     <button class="btn btn-info text-white">Valider</button>
                 <?= form_close() ?>
             </div>

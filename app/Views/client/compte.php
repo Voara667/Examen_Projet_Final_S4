@@ -8,10 +8,16 @@
                 <div class="alert alert-success">
                     <strong>Solde actuel : </strong><?= esc($client['solde']) ?> Ar
                 </div>
+                <?php if ((int) ($client['credit_frais_retrait'] ?? 0) > 0): ?>
+                    <div class="alert alert-info">
+                        <strong>Frais de retrait offerts : </strong><?= esc($client['credit_frais_retrait']) ?> Ar disponibles pour votre prochain retrait.
+                    </div>
+                <?php endif; ?>
                 <div class="d-flex flex-wrap gap-2">
                     <a href="/client/depot" class="btn btn-primary">Dépôt</a>
                     <a href="/client/retrait" class="btn btn-warning">Retrait</a>
                     <a href="/client/transfert" class="btn btn-info text-white">Transfert</a>
+                    <a href="/client/transfert-multiple" class="btn btn-outline-primary">Transfert multiple</a>
                     <a href="/client/historique" class="btn btn-outline-secondary">Historique</a>
                 </div>
             </div>
