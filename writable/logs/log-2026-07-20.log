@@ -1,0 +1,60 @@
+DEBUG - 2026-07-20 07:20:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 07:20:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-20 07:21:00 --> Error connecting to the database: Exception: Unable to open database: unable to open database file in /home/voara/Documents/Examen_Projet_Final_S4/system/Database/SQLite3/Connection.php:111
+Stack trace:
+#0 /home/voara/Documents/Examen_Projet_Final_S4/system/Database/SQLite3/Connection.php(111): SQLite3->__construct()
+#1 /home/voara/Documents/Examen_Projet_Final_S4/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#2 /home/voara/Documents/Examen_Projet_Final_S4/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#3 /home/voara/Documents/Examen_Projet_Final_S4/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#4 /home/voara/Documents/Examen_Projet_Final_S4/system/Database/BaseConnection.php(1706): CodeIgniter\Database\BaseConnection->query()
+#5 /home/voara/Documents/Examen_Projet_Final_S4/system/Commands/Database/ShowTableInfo.php(121): CodeIgniter\Database\BaseConnection->listTables()
+#6 /home/voara/Documents/Examen_Projet_Final_S4/system/CLI/Commands.php(74): CodeIgniter\Commands\Database\ShowTableInfo->run()
+#7 /home/voara/Documents/Examen_Projet_Final_S4/system/CLI/Console.php(47): CodeIgniter\CLI\Commands->run()
+#8 /home/voara/Documents/Examen_Projet_Final_S4/system/Boot.php(442): CodeIgniter\CLI\Console->run()
+#9 /home/voara/Documents/Examen_Projet_Final_S4/system/Boot.php(166): CodeIgniter\Boot::runCommand()
+#10 /home/voara/Documents/Examen_Projet_Final_S4/spark(87): CodeIgniter\Boot::bootSpark()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: SQLite3 error: Unable to open database: unable to open database file in /home/voara/Documents/Examen_Projet_Final_S4/system/Database/SQLite3/Connection.php:118
+Stack trace:
+#0 /home/voara/Documents/Examen_Projet_Final_S4/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#1 /home/voara/Documents/Examen_Projet_Final_S4/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/voara/Documents/Examen_Projet_Final_S4/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#3 /home/voara/Documents/Examen_Projet_Final_S4/system/Database/BaseConnection.php(1706): CodeIgniter\Database\BaseConnection->query()
+#4 /home/voara/Documents/Examen_Projet_Final_S4/system/Commands/Database/ShowTableInfo.php(121): CodeIgniter\Database\BaseConnection->listTables()
+#5 /home/voara/Documents/Examen_Projet_Final_S4/system/CLI/Commands.php(74): CodeIgniter\Commands\Database\ShowTableInfo->run()
+#6 /home/voara/Documents/Examen_Projet_Final_S4/system/CLI/Console.php(47): CodeIgniter\CLI\Commands->run()
+#7 /home/voara/Documents/Examen_Projet_Final_S4/system/Boot.php(442): CodeIgniter\CLI\Console->run()
+#8 /home/voara/Documents/Examen_Projet_Final_S4/system/Boot.php(166): CodeIgniter\Boot::runCommand()
+#9 /home/voara/Documents/Examen_Projet_Final_S4/spark(87): CodeIgniter\Boot::bootSpark()
+#10 {main}
+CRITICAL - 2026-07-20 07:21:00 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [SQLite3]: SQLite3 error: Unable to open database: unable to open database file
+[Method: CLI, Route: db:table/admins]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+ 3 SYSTEMPATH/Database/BaseConnection.php(1706): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH/Commands/Database/ShowTableInfo.php(121): CodeIgniter\Database\BaseConnection->listTables()
+ 5 SYSTEMPATH/CLI/Commands.php(74): CodeIgniter\Commands\Database\ShowTableInfo->run()
+ 6 SYSTEMPATH/CLI/Console.php(47): CodeIgniter\CLI\Commands->run()
+ 7 SYSTEMPATH/Boot.php(442): CodeIgniter\CLI\Console->run()
+ 8 SYSTEMPATH/Boot.php(166): CodeIgniter\Boot::runCommand()
+ 9 ROOTPATH/spark(87): CodeIgniter\Boot::bootSpark()
+CRITICAL - 2026-07-20 07:21:48 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: client/login]
+in SYSTEMPATH/Security/Security.php on line 258.
+ 1 SYSTEMPATH/Security/Security.php(258): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify()
+ 3 SYSTEMPATH/Filters/Filters.php(241): CodeIgniter\Filters\CSRF->before()
+ 4 SYSTEMPATH/Filters/Filters.php(221): CodeIgniter\Filters\Filters->runBefore()
+ 5 SYSTEMPATH/CodeIgniter.php(465): CodeIgniter\Filters\Filters->run()
+ 6 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+DEBUG - 2026-07-20 07:21:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 07:22:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 07:22:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-07-20 07:22:20 --> CSRF token verified.
+DEBUG - 2026-07-20 07:22:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
