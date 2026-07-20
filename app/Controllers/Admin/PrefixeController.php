@@ -3,6 +3,7 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
+use App\Models\OperateurExterneModel;
 use App\Models\PrefixeModel;
 
 class PrefixeController extends BaseController
@@ -10,7 +11,14 @@ class PrefixeController extends BaseController
     public function index()
     {
         $model = new PrefixeModel();
-        $data['prefixes'] = $model->orderBy('prefixe', 'ASC')->findAll();
+        $data['prefixes'] = $model
+            ->select('prefixes.*, operateurs_externes.nom AS operateur_externe_nom')
+            ->join('operateurs_externes', 'operateurs_externes.id = prefixes.operateur_externe_id', 'left')
+            ->orderBy('prefixes.prefixe', 'ASC')
+            ->findAll();
+
+        $operatorModel = new OperateurExterneModel();
+        $data['operateurs'] = $operatorModel->orderBy('nom', 'ASC')->findAll();
 
         return view('admin/prefixes/index', $data);
     }
@@ -19,12 +27,21 @@ class PrefixeController extends BaseController
     {
         $model = new PrefixeModel();
         $prefixe = trim($this->request->getPost('prefixe'));
+        $operateurExterneId = $this->request->getPost('operateur_externe_id');
 
         if ($prefixe === '') {
             return redirect()->back()->with('error', 'Le préfixe est obligatoire.');
         }
 
-        $model->save(['prefixe' => $prefixe, 'actif' => 1]);
+        if ($operateurExterneId === '') {
+            $operateurExterneId = null;
+        }
+
+        $model->save([
+            'prefixe' => $prefixe,
+            'actif' => 1,
+            'operateur_externe_id' => $operateurExterneId,
+        ]);
 
         return redirect()->to('/admin/prefixes')->with('success', 'Préfixe ajouté.');
     }

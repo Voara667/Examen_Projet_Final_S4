@@ -6,6 +6,8 @@
         <tr>
             <th>Type</th>
             <th>Libellé</th>
+            <th>Portée</th>
+            <th>Opérateur externe</th>
             <th>Nombre</th>
             <th>Total frais</th>
         </tr>
@@ -15,6 +17,8 @@
             <tr>
                 <td><?= esc($gain['type_transaction']) ?></td>
                 <td><?= esc($gain['libelle_type']) ?></td>
+                <td><?= esc($gain['portee']) ?></td>
+                <td><?= $gain['operateur_externe_nom'] ? esc($gain['operateur_externe_nom']) : '-' ?></td>
                 <td><?= esc($gain['nombre_transactions']) ?></td>
                 <td><?= esc($gain['total_frais']) ?></td>
             </tr>

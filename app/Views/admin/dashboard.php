@@ -32,5 +32,23 @@
             </div>
         </div>
     </div>
+    <div class="col-md-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <h5 class="card-title">Opérateurs externes</h5>
+                <p class="card-text">Gérez les opérateurs tiers et leurs commissions.</p>
+                <a href="/admin/operateurs" class="btn btn-primary">Voir</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <h5 class="card-title">Montants à envoyer</h5>
+                <p class="card-text">Visualisez les montants dus aux opérateurs externes.</p>
+                <a href="/admin/montants-a-envoyer" class="btn btn-primary">Voir</a>
+            </div>
+        </div>
+    </div>
 </div>
 <?= $this->endSection() ?>
