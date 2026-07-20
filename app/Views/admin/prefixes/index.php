@@ -6,9 +6,18 @@
         <?= form_open('/admin/prefixes/store') ?>
             <?= csrf_field() ?>
             <div class="row g-2 align-items-end">
-                <div class="col-md-8">
+                <div class="col-md-4">
                     <label class="form-label">Nouveau préfixe</label>
                     <input type="text" name="prefixe" class="form-control" maxlength="3" required>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Opérateur externe</label>
+                    <select name="operateur_externe_id" class="form-select">
+                        <option value="">Notre opérateur (interne)</option>
+                        <?php foreach ($operateurs as $operateur): ?>
+                            <option value="<?= esc($operateur['id']) ?>"><?= esc($operateur['nom']) ?> (<?= esc($operateur['commission_pourcentage']) ?>%)</option>
+                        <?php endforeach; ?>
+                    </select>
                 </div>
                 <div class="col-md-4">
                     <button class="btn btn-primary">Ajouter</button>
@@ -21,6 +30,7 @@
     <thead>
         <tr>
             <th>Préfixe</th>
+            <th>Opérateur</th>
             <th>État</th>
             <th>Action</th>
         </tr>
@@ -29,6 +39,7 @@
         <?php foreach ($prefixes as $prefixe): ?>
             <tr>
                 <td><?= esc($prefixe['prefixe']) ?></td>
+                <td><?= esc($prefixe['operateur_externe_nom'] ?? 'Interne') ?></td>
                 <td><?= $prefixe['actif'] ? 'Actif' : 'Inactif' ?></td>
                 <td>
                     <?= form_open('/admin/prefixes/toggle/' . $prefixe['id'], ['style' => 'display:inline']) ?>

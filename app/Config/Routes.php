@@ -26,6 +26,11 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
 
     $routes->get('gains', 'Admin\GainController::index');
     $routes->get('comptes', 'Admin\CompteController::index');
+    $routes->get('operateurs', 'Admin\OperateurExterneController::index');
+    $routes->post('operateurs/store', 'Admin\OperateurExterneController::store');
+    $routes->post('operateurs/update/(:num)', 'Admin\OperateurExterneController::update/$1');
+    $routes->post('operateurs/delete/(:num)', 'Admin\OperateurExterneController::delete/$1');
+    $routes->get('montants-a-envoyer', 'Admin\MontantsAEnvoyerController::index');
 });
 
 // --- Client ---

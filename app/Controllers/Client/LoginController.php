@@ -26,9 +26,7 @@ class LoginController extends BaseController
         }
 
         $prefixeModel = new PrefixeModel();
-        $prefixeValide = $prefixeModel->where('actif', 1)
-            ->where('prefixe', substr($telephone, 0, 3))
-            ->first();
+        $prefixeValide = $prefixeModel->trouverPourNumero($telephone);
 
         if (! $prefixeValide) {
             return redirect()->back()->with('error', 'Le préfixe n\'est pas autorisé.');

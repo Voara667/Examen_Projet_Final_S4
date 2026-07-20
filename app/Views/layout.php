@@ -15,6 +15,8 @@
                 <a class="nav-link" href="/admin/dashboard">Dashboard</a>
                 <a class="nav-link" href="/admin/prefixes">Préfixes</a>
                 <a class="nav-link" href="/admin/baremes">Barèmes</a>
+                <a class="nav-link" href="/admin/operateurs">Opérateurs</a>
+                <a class="nav-link" href="/admin/montants-a-envoyer">Montants à envoyer</a>
                 <a class="nav-link" href="/admin/gains">Gains</a>
                 <a class="nav-link" href="/admin/comptes">Comptes</a>
                 <a class="nav-link" href="/admin/logout">Déconnexion</a>
