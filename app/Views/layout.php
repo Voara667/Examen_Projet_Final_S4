@@ -10,7 +10,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
     <div class="container">
         <a class="navbar-brand" href="/">Mobile Money</a>
-        <div class="navbar-nav ms-auto">
+        <div class="navbar-nav ms-auto flex-row flex-wrap gap-2">
             <?php if (session()->has('admin')): ?>
                 <a class="nav-link" href="/admin/dashboard">Dashboard</a>
                 <a class="nav-link" href="/admin/prefixes">Préfixes</a>

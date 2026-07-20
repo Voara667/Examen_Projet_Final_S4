@@ -6,6 +6,7 @@
         <tr>
             <th>Date</th>
             <th>Type</th>
+            <th>Nom de la transaction</th>
             <th>Montant</th>
             <th>Frais</th>
             <th>Solde</th>
@@ -16,6 +17,7 @@
             <tr>
                 <td><?= esc($transaction['created_at']) ?></td>
                 <td><?= esc($transaction['type_transaction_id']) ?></td>
+                <td><?= esc($transaction['type_transaction_libelle']) ?></td>
                 <td><?= esc($transaction['montant']) ?></td>
                 <td><?= esc($transaction['frais']) ?></td>
                 <td><?= esc($transaction['nouveau_solde']) ?></td>
