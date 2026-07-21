@@ -9,7 +9,7 @@
 <body class="bg-light">
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
     <div class="container">
-        <a class="navbar-brand" href="/">Mobile Money</a>
+        <a class="navbar-brand">Mobile Money</a>
         <div class="navbar-nav ms-auto flex-row flex-wrap gap-2">
             <?php if (session()->has('admin')): ?>
                 <a class="nav-link" href="/admin/dashboard">Dashboard</a>
@@ -29,7 +29,8 @@
                 <a class="nav-link" href="/client/historique">Historique</a>
                 <a class="nav-link" href="/client/logout">Déconnexion</a>
             <?php else: ?>
-                <a class="nav-link" href="/admin/login">Opérateur</a>
+                <a class="nav-link" href="/">Client</a>
+                <a class="nav-link" href="/admin/login">Admin</a>
             <?php endif; ?>
         </div>
     </div>
