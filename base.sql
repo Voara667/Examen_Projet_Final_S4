@@ -162,3 +162,4 @@ INSERT INTO baremes_frais (type_transaction_id, montant_min, montant_max, frais,
 
 INSERT INTO admins (nom, email, password, created_at, updated_at) VALUES
 ('Admin', 'admin@mobilemoney.mg', '$2b$10$yCV3iPTYs3R4fEfkI8bMbujEEF9IUgN/avzAkY9i8dxX3U5oupmma', datetime('now'), datetime('now'));
+ 

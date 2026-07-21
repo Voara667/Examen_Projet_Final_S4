@@ -44,3 +44,13 @@
 - Ajout du transfert multiple avec répartition équitable du montant, vérification du solde global et transaction atomique.
 - Mise à jour de l’historique pour afficher les destinataires externes et la commission associée.
 - Mise à jour de la navigation client et de la page de compte avec l’accès au transfert multiple et l’information sur les crédits de frais de retrait.
+
+## Aléa
+Voara: ajouté un pourcentage pour promotion des frais de transfert
+Créer la table transfert_promotion
+crée le model Promotion.php
+ensuite dans app/controllers/admin on crée PromotionController.php
+après  on crée dans views/admin la vue pour modifié le pourcentage
+après modifié/ajouter les routes 
+Ajout la section dans le layout
+Modifié dans Controllers/client/operationController.php

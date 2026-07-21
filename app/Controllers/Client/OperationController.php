@@ -9,6 +9,7 @@ use App\Models\OperateurExterneModel;
 use App\Models\PrefixeModel;
 use App\Models\TransactionModel;
 use App\Models\TypeTransactionModel;
+use App\Models\PromotionModel;
 
 class OperationController extends BaseController
 {
