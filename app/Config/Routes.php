@@ -8,7 +8,6 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Client\LoginController::form');
 $routes->get('/home', 'Home::index');
 
-// --- Opérateur (protégé par auth) ---
 $routes->get('/admin/login', 'Admin\AuthController::form');
 $routes->post('/admin/login', 'Admin\AuthController::login');
 $routes->get('/admin/logout', 'Admin\AuthController::logout');
@@ -33,7 +32,6 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->get('montants-a-envoyer', 'Admin\MontantsAEnvoyerController::index');
 });
 
-// --- Client ---
 $routes->get('/client/login', 'Client\LoginController::form');
 $routes->post('/client/login', 'Client\LoginController::login');
 $routes->get('/client/logout', 'Client\LoginController::logout');

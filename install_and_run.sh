@@ -51,7 +51,6 @@ install_dependencies() {
   if [[ "$composer_cmd_value" == composer ]]; then
     composer install --no-interaction --no-progress --prefer-dist --no-dev
   else
-    # shellcheck disable=SC2086
     $composer_cmd_value install --no-interaction --no-progress --prefer-dist --no-dev
   fi
 }
