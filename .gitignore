@@ -1,0 +1,29 @@
+# Environment
+.env
+.phpunit.result.cache
+
+# Dependencies
+/vendor/
+
+# CodeIgniter writable files
+/writable/cache/*
+!/writable/cache/index.html
+/writable/debugbar/*
+!/writable/debugbar/index.html
+/writable/logs/*
+!/writable/logs/index.html
+/writable/session/*
+!/writable/session/index.html
+/writable/uploads/*
+!/writable/uploads/index.html
+/writable/temp/*
+!/writable/temp/index.html
+
+# Local database
+#/writable/database.db
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
