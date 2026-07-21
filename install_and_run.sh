@@ -107,9 +107,9 @@ if [[ -f "$ENV_FILE" ]]; then
     printf 'app.baseURL=%s\n' "$APP_BASE_URL" >> "$ENV_FILE"
   fi
   if grep -q '^database\.default\.database=' "$ENV_FILE"; then
-    sed -i "s|^database\.default\.database=.*|database.default.database=$DB_PATH|" "$ENV_FILE"
+    sed -i 's|^database\.default\.database=.*|database.default.database=database.db|' "$ENV_FILE"
   else
-    printf '\ndatabase.default.database=%s\n' "$DB_PATH" >> "$ENV_FILE"
+    printf '\ndatabase.default.database=database.db\n' >> "$ENV_FILE"
   fi
   if grep -q '^database\.default\.DBDriver=' "$ENV_FILE"; then
     sed -i "s|^database\.default\.DBDriver=.*|database.default.DBDriver=SQLite3|" "$ENV_FILE"
@@ -126,7 +126,7 @@ else
 CI_ENVIRONMENT=development
 app.baseURL=$APP_BASE_URL
 
-database.default.database=$DB_PATH
+database.default.database=database.db
 database.default.DBDriver=SQLite3
 EOF
 fi
