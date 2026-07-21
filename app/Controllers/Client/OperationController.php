@@ -30,22 +30,12 @@ class OperationController extends BaseController
         $client = $clientModel->find($clientId);
         $nouveauSolde = $client['solde'] + $montant;
 
-        $clientModel->update($clientId, ['solde' => $nouveauSolde]);
+        $montantepargne = 0;
+        if (!empty ($client['epargne_actif']) {
 
-        $transactionModel = new TransactionModel();
-        $typeModel = new TypeTransactionModel();
-        $type = $typeModel->where('code', 'depot')->first();
-
-        $transactionModel->insert([
-            'client_id' => $clientId,
-            'client_destinataire_id' => null,
-            'type_transaction_id' => $type['id'],
-            'montant' => $montant,
-            'frais' => 0,
-            'nouveau_solde' => $nouveauSolde,
-        ]);
-
-        return redirect()->to('/client/accueil')->with('success', 'Dépôt effectué avec succès.');
+         $montantepargne = (int) round($montant * $client['epargne_pourcentage'])
+        } ) 
+        return redirect()->to('/client/accueil');
     }
 
     public function formRetrait()

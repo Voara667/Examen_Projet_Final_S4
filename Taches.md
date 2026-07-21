@@ -44,3 +44,21 @@
 - Ajout du transfert multiple avec répartition équitable du montant, vérification du solde global et transaction atomique.
 - Mise à jour de l’historique pour afficher les destinataires externes et la commission associée.
 - Mise à jour de la navigation client et de la page de compte avec l’accès au transfert multiple et l’information sur les crédits de frais de retrait.
+
+
+
+# ALEA 3889 
+
+-Notion epargne
+-Client misafidy ny epargne any 
+-Si 50 %   50 % chaque transfert
+
+-obli page apidirana pourcentage
+
+-Model
+
+-Controller
+
+-Views
+
+Changer la fonction depot pour qu'elle prenne en compte l'epargne

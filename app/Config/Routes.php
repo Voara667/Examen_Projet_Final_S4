@@ -48,3 +48,4 @@ $routes->group('client', ['filter' => 'client_auth'], function ($routes) {
     $routes->post('transfert-multiple/valider', 'Client\OperationController::transfertMultiple');
     $routes->get('historique', 'Client\OperationController::historique');
 });
+
